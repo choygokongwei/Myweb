@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Engineer | VICIdial • n8n Automation • E-Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --bg-card: #111118;
+            --bg-card-hover: #161620;
+            --text: #e8e8ef;
+            --text-muted: #8a8a9a;
+            --accent: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --accent-2: #22d3ee;
+            --border: #1e1e2e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 24px;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--accent-2);
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), #818cf8);
+            color: white;
+            box-shadow: 0 4px 24px var(--accent-glow);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px var(--accent-glow);
+        }
+        .btn-secondary {
+            background: var(--bg-card);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--accent);
+        }
+
+        /* Section */
+        .section { padding: 100px 0; }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 60px;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .service-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+        }
+        .service-card:hover::before { opacity: 1; }
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+        .service-card:nth-child(1) .service-icon { background: rgba(99, 102, 241, 0.15); }
+        .service-card:nth-child(2) .service-icon { background: rgba(34, 211, 238, 0.15); }
+        .service-card:nth-child(3) .service-icon { background: rgba(34, 197, 94, 0.15); }
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .service-features {
+            list-style: none;
+        }
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .service-features li::before {
+            content: '✓';
+            color: var(--accent-2);
+            font-weight: 700;
+        }
+
+        /* Bundles */
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .bundle-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 32px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .bundle-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+        .bundle-card.popular {
+            border-color: var(--accent);
+            box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
+        }
+        .popular-tag {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 100px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .bundle-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .bundle-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .bundle-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            -webkit-text-fill-color: var(--text-muted);
+        }
+        .bundle-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .bundle-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+        .bundle-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .bundle-features li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .bundle-features li::before {
+            content: '✓';
+            color: var(--accent-2);
+            font-weight: 700;
+        }
+
+        /* Why Me */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            text-align: center;
+        }
+        .why-item h4 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .why-item p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 100px 24px;
+            position: relative;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .cta-section h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+        .cta-section p {
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        @media (max-width: 640px) {
+            .hero { min-height: auto; padding: 60px 24px; }
+            .section { padding: 60px 0; }
+            .cta-group { flex-direction: column; width: 100%; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="badge">Available for Projects</div>
+        <h1>I Build <span>Sales Machines</span><br>That Run Themselves</h1>
+        <p>VICIdial call centers. n8n automation workflows. E-commerce stores & landing pages that actually convert. One engineer. One invoice. Everything works together.</p>
+        <div class="cta-group">
+            <a href="#contact" class="btn btn-primary">Start a Project →</a>
+            <a href="#services" class="btn btn-secondary">See What I Do</a>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">What I Build</h2>
+            <p class="section-subtitle">Three core skills. Infinite combinations. Built for businesses that want to sell more and work less.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📞</div>
+                    <h3>VICIdial Call Centers</h3>
+                    <p>From bare metal to dialing. I set up, configure, and optimize VICIdial environments so your sales team can focus on closing.</p>
+                    <ul class="service-features">
+                        <li>Server installation & optimization</li>
+                        <li>Campaign & agent configuration</li>
+                        <li>SIP trunk & carrier integration</li>
+                        <li>Recording, reporting & monitoring</li>
+                        <li>24–48 hour turnaround</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>n8n Automation</h3>
+                    <p>Replace expensive Zapier bills with custom workflows. I connect your apps so data flows without manual work.</p>
+                    <ul class="service-features">
+                        <li>Lead sync (Facebook → CRM → Sheets)</li>
+                        <li>Order alerts & follow-up sequences</li>
+                        <li>Slack/Discord notifications</li>
+                        <li>Data scraping & API integrations</li>
+                        <li>Self-hosted or cloud n8n</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛒</div>
+                    <h3>E-Commerce & Landing Pages</h3>
+                    <p>High-converting stores and product pages built to sell. Any platform. Optimized for speed, SEO, and conversions.</p>
+                    <ul class="service-features">
+                        <li>Shopify, WooCommerce, or custom</li>
+                        <li>Single-product landing pages</li>
+                        <li>Payment integration (Stripe, PayPal)</li>
+                        <li>Pixel & conversion tracking</li>
+                        <li>Mobile-first, speed-optimized</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUNDLES -->
+    <section class="section" style="background: var(--bg-card);">
+        <div class="container">
+            <h2 class="section-title">Done-For-You Packages</h2>
+            <p class="section-subtitle">Bundles that save you from hiring three different people. One engineer. One timeline. One result.</p>
+            <div class="bundles-grid">
+                <div class="bundle-card">
+                    <h3>Product Launch</h3>
+                    <div class="bundle-price">$800<span> – $2,000</span></div>
+                    <p class="bundle-desc">Perfect for a single product or service launch. Live in 48 hours.</p>
+                    <ul class="bundle-features">
+                        <li>High-converting landing page</li>
+                        <li>Stripe / PayPal payment setup</li>
+                        <li>n8n order & notification automation</li>
+                        <li>Facebook Pixel & basic tracking</li>
+                        <li>1 week post-launch support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Get Started</a>
+                </div>
+                <div class="bundle-card popular">
+                    <div class="popular-tag">Most Popular</div>
+                    <h3>Online Sales Machine</h3>
+                    <div class="bundle-price">$1,500<span> – $3,500</span></div>
+                    <p class="bundle-desc">Full e-commerce store + automation backbone. Your store runs itself.</p>
+                    <ul class="bundle-features">
+                        <li>Full e-commerce store (any platform)</li>
+                        <li>n8n workflow suite (orders, alerts, follow-ups)</li>
+                        <li>CRM & inventory sync</li>
+                        <li>Speed & SEO optimization</li>
+                        <li>2 weeks of support & training</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Get Started</a>
+                </div>
+                <div class="bundle-card">
+                    <h3>Call Center + Online</h3>
+                    <div class="bundle-price">$2,500<span> – $5,000</span></div>
+                    <p class="bundle-desc">The complete sales infrastructure. Phone team + online store + automation.</p>
+                    <ul class="bundle-features">
+                        <li>VICIdial full setup & optimization</li>
+                        <li>E-commerce store or landing page</li>
+                        <li>Lead flow: Website → CRM → Dialer</li>
+                        <li>n8n automation across all systems</li>
+                        <li>Reporting dashboard & 1 month support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY ME -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Why Work With Me</h2>
+            <p class="section-subtitle">I don't just build websites. I build systems that make money.</p>
+            <div class="why-grid">
+                <div class="why-item">
+                    <h4>24–48h</h4>
+                    <p>Typical turnaround for most projects</p>
+                </div>
+                <div class="why-item">
+                    <h4>3-in-1</h4>
+                    <p>Call center + automation + e-commerce</p>
+                </div>
+                <div class="why-item">
+                    <h4>Remote</h4>
+                    <p>Work with me from anywhere in the world</p>
+                </div>
+                <div class="why-item">
+                    <h4>Flat Rate</h4>
+                    <p>No surprise invoices. Price agreed upfront</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <h2>Ready to Build Your Sales Machine?</h2>
+        <p>Tell me what you're trying to build. I'll reply within a few hours with a clear plan and flat-rate quote. No calls required unless you want one.</p>
+        <div class="cta-group">
+            <!-- Replace with your email or Calendly -->
+            <a href="mailto:your.email@example.com" class="btn btn-primary">📧 Email Me</a>
+            <a href="https://calendly.com/your-link" class="btn btn-secondary">📅 Book a Call</a>
+        </div>
+        <p style="margin-top: 24px; font-size: 0.85rem; color: var(--text-muted);">
+            Or message me on <a href="#" style="color: var(--accent-2); text-decoration: none;">Upwork</a> • <a href="#" style="color: var(--accent-2); text-decoration: none;">Fiverr</a> • <a href="#" style="color: var(--accent-2); text-decoration: none;">LinkedIn</a>
+        </p>
+    </section>
+
+    <footer>
+        <p>Built with code. Designed to convert. © 2026</p>
+    </footer>
+
+</body>
+</html>
+
+
